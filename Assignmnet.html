@@ -62,7 +62,7 @@ img {
 
 
 <p>Model Training . ML Course Project Author: Anastasia</p>
-<p>The goal of this assignment is prediction of the manner in which people do their exercise. We have training data set to train the model and testing data set to predict 20 different manners of doing the excersize. “Classe” variable in the training data set is the variable that we want to predict. It shows how people do thier excersizes. Any other varibal in the training data set can be used as a predictor.</p>
+<p>The goal of this assignment is prediction of the manner in which people do their exercise. We have training data set to train the model and testing data set to predict 20 different manners of doing the exercise. “Classe” variable in the training data set is the variable that we want to predict. It shows how people do their exercises. Any other variable in the training data set can be used as a predictor.</p>
 <p>In the following report I describe how the prediction model is built, I discuss its accuracy and I show the results of my predictions of 20 different test cases form testing data set.</p>
 <p>First, I save and read training and testing data from csv files:</p>
 <pre><code>setwd(&quot;~/Dropbox/Coursera/ML/project&quot;)
@@ -75,7 +75,7 @@ DataTest = read.csv(&quot;pml-testing.csv&quot;, header=TRUE, sep=&quot;,&quot;)
 DWork&lt;- data.table(DataTrain)
 DTest&lt;- data.table (DataTest)
 </code></pre>
-<p>Then, I make my first selection of predictors using those that have smaller number of NAs. More specifically, I select as predictors only those variables that do not have missing observations in the test dataset. These variables are arm, dumbbell, and forearm. I update inirial datasets with these new predictor candidates.</p>
+<p>Then, I make my first selection of predictors using those that have smaller number of NAs. More specifically, I select as predictors only those variables that do not have missing observations in the test dataset. These variables are arm, dumbbell, and forearm. I update initial datasets with these new predictor candidates.</p>
 <pre><code># Find columns with any missings
 
 AnyMissCols &lt;- sapply(DWork, function(x)any(is.na(x) | x == &quot;&quot;));  
@@ -111,7 +111,7 @@ test&lt;- DWork[-inTrain[[1]]]
 
 dim(train)
 dim(test)</code></pre>
-<p>I standardize prediction variables in train and test partitions and I check for prediction variables with zero variation. Ther are no variables with zero variability among selected predictors.</p>
+<p>I standardize prediction variables in train and test partitions and I check for prediction variables with zero variation. There are no variables with zero variability among selected predictors.</p>
 <pre><code># Train partition
 
 Xme &lt;- train[, Candidates, with=FALSE]
@@ -132,7 +132,7 @@ testCS&lt;- data.table(data.frame(classe = test[,classe], YCSme))
 nzv &lt;- nearZeroVar(trainCS, saveMetrics=TRUE)
 if (any(nzv$nzv)) nzv else message(&quot;No variables with near zero variance&quot;)
 </code></pre>
-<p>I set parallel clusters and I proceed to the model training by Random Forest Method. I use this methode becuase it yields small out of smapel error.</p>
+<p>I set parallel clusters and I proceed to the model training by Random Forest Method. I use this method because it yields small out of sample error.</p>
 <pre><code># set parallel
 
 require(parallel)

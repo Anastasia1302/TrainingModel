@@ -1,8 +1,7 @@
 Model Training . ML Course Project
 Author: Anastasia
 
-
-The goal of this assignment is prediction of the manner in which people do their exercise. We have training data set to train the model and testing data set to predict 20 different manners of doing the excersize. "Classe" variable in the training data set is the variable that we want to predict. It shows how people do thier excersizes. Any other varibal in the training data set can be used as a predictor. 
+The goal of this assignment is prediction of the manner in which people do their exercise. We have training data set to train the model and testing data set to predict 20 different manners of doing the exercise. "Classe" variable in the training data set is the variable that we want to predict. It shows how people do their exercises. Any other variable in the training data set can be used as a predictor. 
 
 In the following report I describe how the prediction model is built, I discuss its accuracy and I show the results of my predictions of 20 different test cases form testing data set. 
 
@@ -21,7 +20,7 @@ DTest<- data.table (DataTest)
 
 ```
 
-Then, I make my first selection of predictors using those that have smaller number of NAs. More specifically, I select as predictors only those variables that do not have missing observations in the test dataset. These variables are arm, dumbbell, and forearm. I update inirial datasets with these new predictor candidates. 
+Then, I make my first selection of predictors using those that have smaller number of NAs. More specifically, I select as predictors only those variables that do not have missing observations in the test dataset. These variables are arm, dumbbell, and forearm. I update initial datasets with these new predictor candidates. 
 
 ```
 # Find columns with any missings
@@ -63,7 +62,7 @@ test<- DWork[-inTrain[[1]]]
 dim(train)
 dim(test)
 ```
-I standardize prediction variables in train and test partitions and I check for prediction variables with zero variation. Ther are no variables with zero variability among selected predictors. 
+I standardize prediction variables in train and test partitions and I check for prediction variables with zero variation. There are no variables with zero variability among selected predictors. 
 
 ```
 # Train partition
@@ -88,7 +87,7 @@ if (any(nzv$nzv)) nzv else message("No variables with near zero variance")
 
 ```
 
-I set parallel clusters and I proceed to the model training by Random Forest Method. I use this methode becuase it yields small out of smapel error.
+I set parallel clusters and I proceed to the model training by Random Forest Method. I use this method because it yields small out of sample error.
 
 ```
 # set parallel
